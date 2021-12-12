@@ -1,0 +1,9 @@
+os: linux
+
+
+language: python
+python: '3.8'
+
+
+script:
+  - travis_deploy.sh
