@@ -25,7 +25,5 @@ jobs:
 
       - name: Ruun tets general
         run: tox -e py38
-        env:
-          VERRS: PTESTVERSION
 
 
