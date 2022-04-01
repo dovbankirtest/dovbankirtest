@@ -13,7 +13,6 @@ jobs:
    steps:
      - name: Check out repository code, Clone repo
        uses: actions/checkout@v3
-
      - name: set env var
        - env:
            VAR: '1234'
@@ -21,7 +20,6 @@ jobs:
        - env:
            VAR: 'kirill'
          if: ${{ github.event.inputs.rebuild_branch }} = '1'
-
      - name: Run script
        run: |
          sh scripts/print_something.sh
