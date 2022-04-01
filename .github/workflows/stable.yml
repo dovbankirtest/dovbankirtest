@@ -1,24 +1,12 @@
 name: Test event
-on: [pull_request]
+on:
+  push:
+
 jobs:
  test_job:
    runs-on: ubuntu-latest
    steps:
-     - name: Checkout repository code
-       uses: actions/checkout@v3
 
-     - name: Setup python
-       uses: actions/setup-python@v3
-       with:
-         python-version: 3.8
+     - name: Run script
+       run: scripts/print_something.sh
 
-     - name: Install dependencies
-       run: pip install tox
-
-     - name: Run flake8 tests
-       run: tox -e flake8
-
-     - name: Run tests
-       env:
-         PTESTVERSION_GA: ${{secrets.PTESTVERSION_GA}}
-       run: tox -e py38
