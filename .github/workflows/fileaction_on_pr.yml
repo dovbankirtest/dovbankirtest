@@ -28,13 +28,13 @@ jobs:
 
       - name: Run testssst flake
         run: tox -e flake8
+        if: github.event_name == 'push'
+
+      - name: Ruun py38 tets
+        run: tox -e py38
         if: github.event_name == 'pull_request'
 
-      - name: Ruun tets general
-        run: tox -e py38
-        if: github.event_name == 'pull'
-
-      - name: Run test workflow_dispatch
+      - name: Run full test from workflow_dispatch manually
         if: github.event_name == 'workflow_dispatch'
         run: tox
 
