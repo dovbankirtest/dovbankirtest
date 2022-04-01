@@ -10,6 +10,8 @@ jobs:
        uses: actions/checkout@v3
 
      - name: Run script
+       evn:
+         VAR: '1234'
        run: |
          sh scripts/print_something.sh
 
