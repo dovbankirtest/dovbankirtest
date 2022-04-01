@@ -1,43 +1,43 @@
-name: Tests
-env:
-  MYVAR: "THis is value of my var"
-  PTESTVERSION: '6.2.5'
-  PTESTVERSION_GA: ${{secrets.PTESTVERSION_GA}}
-on:
-  workflow_dispatch:
-    inputs:
-      rebuild_branch:
-        description: 'Environment where to rebuidl docker image. stable or dev'
-        required: False
-        default: 'no_rebuild'
-  pull_request:
-  push:
-jobs:
-  Name_of_job_can_use_through_validation:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code, Clone repo
-        uses: actions/checkout@v3
-
-      - name: Setu p Python3.8 name
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.8
-
-      - name: IInstall dependencies
-        run: pip install tox
-
-      - name: Run testssst flake
-        run: tox -e flake8
-        if: github.event_name == 'push'
-
-      - name: Ruun py38 tets
-        run: tox -e py38
-        if: github.event_name == 'pull_request'
-
-      - name: Run full test from workflow_dispatch manually
-        if: github.event_name == 'workflow_dispatch'
-        run: tox
+#name: Tests
+#env:
+#  MYVAR: "THis is value of my var"
+#  PTESTVERSION: '6.2.5'
+#  PTESTVERSION_GA: ${{secrets.PTESTVERSION_GA}}
+#on:
+#  workflow_dispatch:
+#    inputs:
+#      rebuild_branch:
+#        description: 'Environment where to rebuidl docker image. stable or dev'
+#        required: False
+#        default: 'no_rebuild'
+#  pull_request:
+#  push:
+#jobs:
+#  Name_of_job_can_use_through_validation:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Check out repository code, Clone repo
+#        uses: actions/checkout@v3
+#
+#      - name: Setu p Python3.8 name
+#        uses: actions/setup-python@v3
+#        with:
+#          python-version: 3.8
+#
+#      - name: IInstall dependencies
+#        run: pip install tox
+#
+#      - name: Run testssst flake
+#        run: tox -e flake8
+#        if: github.event_name == 'push'
+#
+#      - name: Ruun py38 tets
+#        run: tox -e py38
+#        if: github.event_name == 'pull_request'
+#
+#      - name: Run full test from workflow_dispatch manually
+#        if: github.event_name == 'workflow_dispatch'
+#        run: tox
 
 #      - name: Run from workflow_dispatch
 #        if: github.event_name == 'workflow_dispatch'

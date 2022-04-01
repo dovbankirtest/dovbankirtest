@@ -1,0 +1,40 @@
+name: Tests
+on: [push, pull_request]
+jobs:
+ test_flake8:
+   if: github.event_name == 'push'
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout repository code
+       uses: actions/checkout@v3
+
+     - name: Setup python
+       uses: actions/setup-python@v3
+       with:
+         python-version: 3.8
+
+     - name: Install dependencies
+       run: pip install tox
+
+     - name: Run test
+       run: tox -e flake8
+
+ test_py38:
+   if: github.event_name != 'push'
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout repository code
+       uses: actions/checkout@v3
+
+     - name: Setup python
+       uses: actions/setup-python@v3
+       with:
+         python-version: 3.8
+
+     - name: Install dependencies
+       run: pip install tox
+
+     - name: Run test
+       env:
+         PTESTVERSION_GA: ${{secrets.PTESTVERSION_GA}}
+       run: tox -e py38
