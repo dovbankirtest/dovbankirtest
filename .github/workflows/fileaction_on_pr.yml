@@ -3,8 +3,7 @@ env:
   MYVAR: "THis is value of my var"
   PTESTVERSION: '6.2.5'
   PTESTVERSION_GA: ${{secrets.PTESTVERSION_GA}}
-on:
-  push:
+on: [push]
 jobs:
   Name_of_job_can_use_through_validation:
     runs-on: ubuntu-latest
