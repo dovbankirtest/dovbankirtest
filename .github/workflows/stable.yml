@@ -1,6 +1,11 @@
 name: Test event
 on:
-  push:
+ workflow_dispatch:
+   inputs:
+     rebuild_branch:
+       description: 'Environment where to rebuidl docker image. stable or dev'
+       required: False
+       default: 'no_rebuild'
 
 jobs:
  test_job:
@@ -9,9 +14,15 @@ jobs:
      - name: Check out repository code, Clone repo
        uses: actions/checkout@v3
 
+     - name: set env var
+       - env:
+           VAR: '1234'
+         if: ${{ github.event.inputs.rebuild_branch }} != '1'
+       - env:
+           VAR: 'kirill'
+         if: ${{ github.event.inputs.rebuild_branch }} = '1'
+
      - name: Run script
-       env:
-         VAR: '1234'
        run: |
          sh scripts/print_something.sh
 
