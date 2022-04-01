@@ -1,12 +1,12 @@
 name: Test event
 on:
- workflow_dispatch:
-   inputs:
-     rebuild_branch:
-       description: 'print true if need to rebuidl docker image.'
-       required: False
-       default: 'no_rebuild'
- push:
+  workflow_dispatch:
+    inputs:
+      rebuild_branch2:
+        description: 'print true if need to rebuidl docker image.'
+        required: False
+        default: 'no_rebuild'
+  push:
 
 jobs:
  test_job:
