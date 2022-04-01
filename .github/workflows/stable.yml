@@ -14,14 +14,6 @@ jobs:
      - name: Check out repository code, Clone repo
        uses: actions/checkout@v3
 
-     - if: ${{ github.event.inputs.rebuild_branch }} = '1'
-       env:
-         VAR: '1234'
-
-     - if: ${{ github.event.inputs.rebuild_branch }} != '1'
-       env:
-         VAR: 'kirill'
-
      - name: Run script
        run: |
          sh scripts/print_something.sh

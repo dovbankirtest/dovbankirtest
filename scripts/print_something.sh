@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "💡💡💡💡💡💡💡💡💡💡💡💡💡💡 tttttttttttttttttttttttttttttttttttttttr"
-echo $VAR
+echo $github.ref
