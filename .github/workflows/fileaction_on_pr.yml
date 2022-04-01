@@ -10,7 +10,7 @@ on:
         required: False
         default: 'no_rebuild'
   pull_request:
-  pull:
+  push:
 jobs:
   Name_of_job_can_use_through_validation:
     runs-on: ubuntu-latest
