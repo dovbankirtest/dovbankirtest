@@ -6,6 +6,7 @@ on:
        description: 'Environment where to rebuidl docker image. stable or dev'
        required: False
        default: 'no_rebuild'
+ push:
 
 jobs:
  test_job:
