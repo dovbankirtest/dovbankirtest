@@ -4,13 +4,6 @@ env:
   PTESTVERSION: '6.2.5'
   PTESTVERSION_GA: ${{secrets.PTESTVERSION_GA}}
 on:
- #workflow_dispatch:
- #  inputs:
- #    rebuild_branch:
- #      description: 'Environment where to rebuidl docker image. stable or dev'
- #      required: False
- #      default: 'no_rebuild'
- #pull_request:
   push:
     branches: [main]
 jobs:
