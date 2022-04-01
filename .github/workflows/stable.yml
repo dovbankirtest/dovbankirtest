@@ -6,7 +6,9 @@ jobs:
  test_job:
    runs-on: ubuntu-latest
    steps:
+      - name: Check out repository code, Clone repo
+        uses: actions/checkout@v3
 
      - name: Run script
-       run: pwd #  ./scripts/print_something.sh
+       run: scripts/print_something.sh
 
