@@ -18,7 +18,7 @@ jobs:
      - name: Run flake8 tests
        run: tox -e flake8
 
-     - name: Run test
+     - name: Run tests
        env:
          PTESTVERSION_GA: ${{secrets.PTESTVERSION_GA}}
        run: tox -e py38
