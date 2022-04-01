@@ -38,6 +38,5 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         run: |
           echo "ered by a ${{ github.event.inputs.rebuild_branch }} erebuild_brancht."
-          echo "ered by a ${{ github.event_name }} event."
 
 
