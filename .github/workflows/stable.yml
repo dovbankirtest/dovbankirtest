@@ -1,7 +1,7 @@
-name: Tests
+name: Test event
 on: [pull_request]
 jobs:
- tests:
+ test_job:
    runs-on: ubuntu-latest
    steps:
      - name: Checkout repository code
