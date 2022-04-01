@@ -8,5 +8,5 @@ jobs:
    steps:
 
      - name: Run script
-       run: scripts/print_something.sh
+       run: ./scripts/print_something.sh
 
