@@ -1,7 +1,8 @@
-name: Pipeline Nammme
+name: Tests
 env:
   MYVAR: "THis is value of my var"
   PTESTVERSION: '6.2.5'
+  PTESTVERSION_GA: secrets.PTESTVERSION_GA
 on:
   workflow_dispatch:
     inputs:

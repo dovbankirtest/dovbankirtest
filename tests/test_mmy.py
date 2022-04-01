@@ -1,6 +1,6 @@
 import os
 
-ver2 = os.getenv('PTESTVERSION', 'noo2')
+ver2 = os.getenv('PTESTVERSION_GA', 'noo2')
 
 
 def test1():
