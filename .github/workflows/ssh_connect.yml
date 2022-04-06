@@ -6,16 +6,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/private.key
-          sudo chmod 600 ~/.ssh/private.key
-          echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-        shell: bash
-        env:
-          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
-          SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
-          SSH_KEY_PATH: ${{ github.workspace }}/../private.key
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/private.key
+        chmod 600 ~/.ssh/private.key
+        echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+        cat >>~/.ssh/config <<END
+        Host dev_host
+          HostName $SSH_HOST
+          User $SSH_USER
+          IdentityFile ~/.ssh/private.key
+          StrictHostKeyChecking no
+        END
+      env:
+        SSH_USER: ${{ secrets.SSH_USER }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
 
       - name: Stop the server
-        run: ssh -i ~/.ssh/private.key kdouban@dsc-uat-plumber01.productmadness.com mkdir ~/home/tetss
+        run: ssh dev_host 'mkdir ~/tetsss'
