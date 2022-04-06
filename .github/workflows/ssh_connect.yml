@@ -11,13 +11,6 @@ jobs:
           echo "$SSH_PRIVATE_KEY" >  ~/.ssh/private.key
           chmod 600 ~/.ssh/private.key
           echo "SSH_DEV_HOST" > ~/.ssh/known_hosts
-          cat >>~/.ssh/config <<END
-          Host staging
-            HostName SSH_DEV_HOST
-            User $SSH_USER
-            IdentityFile ~/.ssh/private.key
-            StrictHostKeyChecking no
-          END
         shell: bash
         env:
           SSH_USER: ${{ secrets.STAGING_SSH_USER }}
