@@ -25,4 +25,4 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_DEV_HOST }}
 
       - name: Create dir
-        run: ssh $SSH_USER@$SSH_DEV_HOST mkdir ~/tets
+        run: ssh SSH_USER@SSH_HOST mkdir ~/tets
