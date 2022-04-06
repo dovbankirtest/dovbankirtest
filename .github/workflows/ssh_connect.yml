@@ -10,15 +10,14 @@ jobs:
           mkdir -p ~/.ssh/
           echo "$SSH_PRIVATE_KEY" >  ~/.ssh/private.key
           chmod 600 ~/.ssh/private.key
-          echo "$SSH_DEV_HOST" > ~/.ssh/known_hosts
+          echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
         shell: bash
         env:
-          SSH_USER: ${{ secrets.SSH_USER }}
           SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
           SSH_DEV_HOST: ${{ secrets.SSH_DEV_HOST }}
-
-      - name: Create dir0
-        run: echo "$SSH_DEV_HOST"
+          SSH_KEY_PATH: ${{ github.workspace }}/.ssh/private.key
 
       - name: Create dir
-        run: ssh kdouban@dsc-uat-plumber01.productmadness.com mkdir ~/tets
+        run: ssh -i $SSH_KEY_PATH kdouban@dsc-uat-plumber01.productmadness.com mkdir ~/tets
