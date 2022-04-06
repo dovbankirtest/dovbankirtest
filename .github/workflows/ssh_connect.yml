@@ -20,13 +20,13 @@ jobs:
           SSH_KEY_PATH: ${{ github.workspace }}/../private.key
 
       - name: Create dir0
-        run: echo $SSH_KEY_PATH
+        run: echo ${{ github.workspace }}/../private.key
 
       - name: Create dir00
-        run: echo SSH_KEY_PATH
+        run: echo "${{ github.workspace }}/../private.key"
 
       - name: Create dir000
         run: echo "$SSH_KEY_PATH"
 
       - name: Create dir
-        run: ssh -i $SSH_KEY_PATH kdouban@dsc-uat-plumber01.productmadness.com mkdir ~/tets
+        run: ssh -i SSH_KEY_PATH kdouban@dsc-uat-plumber01.productmadness.com mkdir ~/tets
