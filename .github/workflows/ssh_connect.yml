@@ -30,11 +30,11 @@ jobs:
 
       - name: List files in the repository1
         run: |
-          ls ${{ github.workspace }}
+          ls ${{ github.workspace }}/../../..
 
       - name: List files in the repository2
         run: |
-          ls ${{ github.workspace }}/..
+          ls ${{ github.workspace }}/../../..
 
       - name: List files in the repository3
         run: |
