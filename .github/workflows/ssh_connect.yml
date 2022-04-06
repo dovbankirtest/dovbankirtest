@@ -13,11 +13,20 @@ jobs:
           echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
         shell: bash
         env:
-          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
           SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
           SSH_DEV_HOST: ${{ secrets.SSH_DEV_HOST }}
-          SSH_KEY_PATH: ${{ github.workspace }}/.ssh/private.key
+          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
+          SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
+          SSH_KEY_PATH: ${{ github.workspace }}/../private.key
+
+      - name: Create dir0
+        run: echo $SSH_KEY_PATH
+
+      - name: Create dir00
+        run: echo SSH_KEY_PATH
+
+      - name: Create dir000
+        run: echo "$SSH_KEY_PATH"
 
       - name: Create dir
         run: ssh -i $SSH_KEY_PATH kdouban@dsc-uat-plumber01.productmadness.com mkdir ~/tets
