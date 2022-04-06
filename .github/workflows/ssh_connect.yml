@@ -18,4 +18,4 @@ jobs:
           SSH_KEY_PATH: ${{ github.workspace }}/../private.key
 
       - name: Stop the server
-        run: ssh -i $SSH_KEY_PATH kdouban@dsc-uat-plumber01.productmadness.com mkdir ~/home/tetss
+        run: ssh -i ~/.ssh/private.key kdouban@dsc-uat-plumber01.productmadness.com mkdir ~/home/tetss
