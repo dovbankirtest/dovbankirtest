@@ -10,7 +10,7 @@ jobs:
           mkdir -p ~/.ssh/
           echo "$SSH_PRIVATE_KEY" >  ~/.ssh/private.key
           chmod 600 ~/.ssh/private.key
-          echo "SSH_DEV_HOST" > ~/.ssh/known_hosts
+          echo "$SSH_DEV_HOST" > ~/.ssh/known_hosts
         shell: bash
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
@@ -18,4 +18,4 @@ jobs:
           SSH_DEV_HOST: ${{ secrets.SSH_DEV_HOST }}
 
       - name: Create dir
-        run: ssh SSH_USER@SSH_DEV_HOST mkdir ~/tets
+        run: ssh $SSH_USER@$SSH_DEV_HOST mkdir ~/tets
