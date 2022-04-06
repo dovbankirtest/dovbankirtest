@@ -28,5 +28,17 @@ jobs:
       - name: Create dir000
         run: echo "$SSH_KEY_PATH"
 
+      - name: List files in the repository1
+        run: |
+          ls ${{ github.workspace }}
+
+      - name: List files in the repository2
+        run: |
+          ls ${{ github.workspace }}/..
+
+      - name: List files in the repository3
+        run: |
+          ls ${{ github.workspace }}/../..
+
       - name: Create dir
         run: ssh -i ~/.ssh/private.key kdouban@dsc-uat-plumber01.productmadness.com mkdir ~/tets
