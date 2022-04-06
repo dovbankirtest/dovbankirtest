@@ -1,0 +1,28 @@
+name: Connect ssh
+on:
+  push:
+    branches: ['main']
+jobs:
+  Name_of_job_can_use_through_validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/private.key
+          chmod 600 ~/.ssh/private.key
+          ssh-keyscan -H $SSH_HOST > ~/.ssh/known_hosts
+          cat >>~/.ssh/config <<END
+          Host dev_host
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/private.key
+          END
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+
+      - name: Stop the server
+        run: ssh dev_host 'sh ~/tetsss4/scripttest.sh'
+        #  run: ssh dev_host 'mkdir ~/tetsss4'
