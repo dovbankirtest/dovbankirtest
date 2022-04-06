@@ -23,5 +23,5 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
 
       - name: Stop the server
-        run: dev_host 'sh ~/tetsss4/scripttest.sh'
+        run: ssh dev_host 'sh ~/tetsss4/scripttest.sh'
         #  run: ssh dev_host 'mkdir ~/tetsss4'
