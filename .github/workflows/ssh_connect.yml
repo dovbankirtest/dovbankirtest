@@ -10,7 +10,7 @@ jobs:
           mkdir -p ~/.ssh/
           echo "$SSH_PRIVATE_KEY" >  ~/.ssh/private.key
           chmod 600 ~/.ssh/private.key
-          ssh-keyscan -H $SSH_DEV_HOST > ~/.ssh/known_hosts
+          ssh-keyscan -H dsc-uat-plumber01.productmadness.com > ~/.ssh/known_hosts
         shell: bash
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
@@ -34,11 +34,11 @@ jobs:
 
       - name: List files in the repository2
         run: |
-          ls ${{ github.workspace }}/../../..
+          ls ${{ github.workspace }}/../../../..
 
       - name: List files in the repository3
         run: |
-          ls ${{ github.workspace }}/../..
+          ls ${{ github.workspace }}/../../../../..
 
       - name: Create dir
         run: ssh -i ~/.ssh/private.key kdouban@dsc-uat-plumber01.productmadness.com mkdir ~/tets
