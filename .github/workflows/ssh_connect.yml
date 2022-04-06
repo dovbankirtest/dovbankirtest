@@ -1,7 +1,6 @@
 name: Connect ssh
 on:
   push:
-    branches: ['mmain']
 jobs:
   Name_of_job_can_use_through_validation:
     runs-on: ubuntu-latest
@@ -24,5 +23,9 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
 
       - name: Stop the server
-        run: ssh dev_host 'sh ~/tetsss4/scripttest.sh'
+        #run: ssh dev_host 'sh ~/tetsss4/scripttest.sh'
+        run: ssh kdouban@dsc-uat-plumber01.productmadness.com 'mkdir ~/tetsss5'
+
+      #- name: copy to the server
+        #run: rsync firstfile.py ~/tetsss4/rs
         #  run: ssh dev_host 'mkdir ~/tetsss4'
