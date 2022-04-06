@@ -24,7 +24,7 @@ jobs:
 
       - name: Stop the server
         #run: ssh dev_host 'sh ~/tetsss4/scripttest.sh'
-        run: ssh kdouban@dsc-uat-plumber01.productmadness.com 'mkdir ~/tetsss5'
+        run: ssh -i ~/.ssh/private.key kdouban@dsc-uat-plumber01.productmadness.com 'mkdir ~/tetsss5'
 
       #- name: copy to the server
         #run: rsync firstfile.py ~/tetsss4/rs
