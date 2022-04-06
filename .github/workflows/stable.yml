@@ -1,0 +1,24 @@
+name: Test event
+on:
+  workflow_dispatch:
+    inputs:
+      rebuild_branch2:
+        description: 'print true if need to rebuidl docker image.'
+        required: False
+        default: 'no_rebuild'
+  push:
+
+jobs:
+ test_job:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Check out repository code, Clone repo
+       uses: actions/checkout@v3
+
+     - name: Run script
+       env:
+         BRANCH: ${{ github.ref}}
+         REBUILD_BRANCH: ${{ github.event.inputs.rebuild_branch2 }}
+       run: |
+         sh scripts/print_something.sh
+
