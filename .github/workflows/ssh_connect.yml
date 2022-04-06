@@ -11,7 +11,7 @@ jobs:
           echo "$SSH_PRIVATE_KEY" >  ~/.ssh/private.key
           chmod 600 ~/.ssh/private.key
           echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-        shell: bash
+        #  shell: bash
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_DEV_HOST: ${{ secrets.SSH_DEV_HOST }}
