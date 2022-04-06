@@ -13,9 +13,9 @@ jobs:
           echo "SSH_DEV_HOST" > ~/.ssh/known_hosts
         shell: bash
         env:
-          SSH_USER: ${{ secrets.STAGING_SSH_USER }}
+          SSH_USER: ${{ secrets.SSH_USER }}
           SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
-          SSH_HOST: ${{ secrets.SSH_DEV_HOST }}
+          SSH_DEV_HOST: ${{ secrets.SSH_DEV_HOST }}
 
       - name: Create dir
-        run: ssh SSH_USER@SSH_HOST mkdir ~/tets
+        run: ssh SSH_USER@SSH_DEV_HOST mkdir ~/tets
