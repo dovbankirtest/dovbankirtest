@@ -5,6 +5,9 @@ jobs:
   Name_of_job_can_use_through_validation:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code, Clone repo
+        uses: actions/checkout@v3
+
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
@@ -26,7 +29,9 @@ jobs:
         #run: ssh dev_host 'sh ~/tetsss4/scripttest.sh'
         # run: ssh  'mkdir ~/tetsss5'
         #run: ssh -i ~/.ssh/private.key kdouban@dsc-uat-plumber01.productmadness.com 'mkdir ~/tetsss5'
-        run: rsync -e 'ssh -i ~/.ssh/private.key' ${{ github.workspace }}/firstfile.py kdouban@dsc-uat-plumber01.productmadness.com:~/tetsss4/rs
+        run: |
+          ls .
+          rsync -e 'ssh -i ~/.ssh/private.key' ${{ github.workspace }}/firstfile.py kdouban@dsc-uat-plumber01.productmadness.com:~/tetsss4/rs
 
       #- name: copy to the server
         #run: rsync firstfile.py ~/tetsss4/rs
