@@ -44,7 +44,7 @@ jobs:
                 "PTESTVERSION22": "productionooooo"
               }
             }
-          export_to: env,log,output
+          export_to: output
 
       - name: Ruun py38 tets
         run: tox -e py38
