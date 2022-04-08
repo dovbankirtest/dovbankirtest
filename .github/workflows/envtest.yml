@@ -39,7 +39,9 @@ jobs:
                 "PTESTVERSION": "production22"
               },
               ".*": {
-                "PTESTVERSION": "production33"
+                "PTESTVERSION": "production33",
+                "PTESTVERSION11": "production3333",
+                "PTESTVERSION22": "productionooooo"
               }
             }
           export_to: env,log,output
