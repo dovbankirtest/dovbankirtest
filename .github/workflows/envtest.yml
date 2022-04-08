@@ -29,10 +29,25 @@ jobs:
       - run: echo "${{ steps.stp.env.PTESTVERSION }} - PTESTVERSION tuts "
       - run: echo "${{ steps.stp.outputs.PTESTVERSION }} - PTESTVERSION tuts "
 
+      - uses: kanga333/variable-mapper@master
+        id:
+        with:
+          key: "${{github.base_ref}}"
+          map: |
+            {
+              "master": {
+                "PTESTVERSION": "production22"
+              },
+              ".*": {
+                "PTESTVERSION": "production33"
+              }
+            }
+          export_to: env,log,output
+
       - name: Ruun py38 tets
         run: tox -e py38
         env:
-          PTESTVERSION33: ${{ steps.stp.env.PTESTVERSION }}
+          PTESTVERSION33: ${{ steps.export.outputs.PTESTVERSION }}
           PTESTVERSION: ${{ env.PTESTVERSION }}
           PTESTV: ${{ env.MYVAR }}
           PTESTV2: $MYVAR
