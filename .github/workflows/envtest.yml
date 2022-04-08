@@ -27,8 +27,9 @@ jobs:
       - name: Ruun py38 tets
         run: tox -e py38
         env:
-          PTESTVERSION: $PTESTVERSION
-          PTESTV: "$MYVAR"
+          PTESTVERSION: ${{ env.PTESTVERSION }}
+          PTESTV: ${{ env.MYVAR }}
+
 
 
 
