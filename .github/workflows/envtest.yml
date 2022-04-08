@@ -22,7 +22,9 @@ jobs:
           PTESTVERSION: '6.2.5'
 
       - run: echo "$MYVAR - MYVAR tuts "
+      - run: echo "${{ env.MYVAR }} - MYVAR tuts "
       - run: echo "$PTESTVERSION_GA - PTESTVERSION_GA tuts "
+      - run: echo "${{ env.PTESTVERSION_GA }} - PTESTVERSION_GA tuts "
       - run: echo "${{ env.PTESTVERSION }} - PTESTVERSION tuts "
       - run: echo "${{ steps.stp.env.PTESTVERSION }} - PTESTVERSION tuts "
       - run: echo "${{ steps.stp.outputs.PTESTVERSION }} - PTESTVERSION tuts "
@@ -32,6 +34,7 @@ jobs:
         env:
           PTESTVERSION: ${{ env.PTESTVERSION }}
           PTESTV: ${{ env.MYVAR }}
+          PTESTV2: qewrqerw
 
 
 
