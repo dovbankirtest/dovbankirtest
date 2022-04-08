@@ -30,7 +30,7 @@ jobs:
       - run: echo "${{ steps.stp.outputs.PTESTVERSION }} - PTESTVERSION tuts "
 
       - uses: kanga333/variable-mapper@master
-        id:
+        id: export
         with:
           key: "${{github.base_ref}}"
           map: |
