@@ -16,7 +16,7 @@ jobs:
           python-version: 3.8
 
       - name: IInstall dependencies
-        id: stp
+        id: "stp"
         run: pip install tox
         env:
           PTESTVERSION: '6.2.5'
@@ -32,7 +32,7 @@ jobs:
       - name: Ruun py38 tets
         run: tox -e py38
         env:
-          PTESTVERSION: ${{ env.PTESTVERSION }}
+          PTESTVERSION33: ${{ steps.stp.env.PTESTVERSION }}
           PTESTV: ${{ env.MYVAR }}
           PTESTV2: qewrqerw
 
