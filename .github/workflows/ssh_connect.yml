@@ -29,8 +29,11 @@ jobs:
         #run: ssh dev_host 'sh ~/tetsss4/scripttest.sh'
         # run: ssh  'mkdir ~/tetsss5'
         #run: ssh -i ~/.ssh/private.key kdouban@dsc-uat-plumber01.productmadness.com 'mkdir ~/tetsss5'
+        #run: |
+        #  rsync -e 'ssh -i ~/.ssh/private.key' ${{ github.workspace }}/firstfile.py kdouban@dsc-uat-plumber01.productmadness.com:~/tetsss4/rs/
         run: |
-          rsync -e 'ssh -i ~/.ssh/private.key' ${{ github.workspace }}/firstfile.py kdouban@dsc-uat-plumber01.productmadness.com:~/tetsss4/rs/
+          rsync -e 'ssh -i ~/.ssh/private.key' ${{ github.workspace }}/firstfile.py $SSH_USER@$SSH_HOST:~/tetsss4/rs/
+
 
       #- name: copy to the server
         #run: rsync firstfile.py ~/tetsss4/rs
