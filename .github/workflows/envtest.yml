@@ -21,11 +21,13 @@ jobs:
           PTESTVERSION: '6.2.5'
 
       - run: echo "$MYVAR - MYVAR tuts "
-      - run: echo "$PTESTVERSION_GA - PTESTVERSION_GA tuts "
+      - run: echo "'$PTESTVERSION_GA' - PTESTVERSION_GA tuts "
       - run: echo "$PTESTVERSION - PTESTVERSION tuts "
 
       - name: Ruun py38 tets
         run: tox -e py38
+        env:
+          PTESTVERSION: $PTESTVERSION
 
 
 
