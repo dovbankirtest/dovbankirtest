@@ -33,8 +33,9 @@ jobs:
         run: tox -e py38
         env:
           PTESTVERSION33: ${{ steps.stp.env.PTESTVERSION }}
+          PTESTVERSION: ${{ env.PTESTVERSION }}
           PTESTV: ${{ env.MYVAR }}
-          PTESTV2: qewrqerw
+          PTESTV2: $MYVAR
 
 
 
