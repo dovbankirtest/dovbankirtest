@@ -28,7 +28,7 @@ jobs:
         run: tox -e py38
         env:
           PTESTVERSION: $PTESTVERSION
-          PTESTV: $MYVAR
+          PTESTV: "$MYVAR"
 
 
 
