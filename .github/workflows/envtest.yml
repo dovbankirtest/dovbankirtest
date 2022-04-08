@@ -16,13 +16,16 @@ jobs:
           python-version: 3.8
 
       - name: IInstall dependencies
+        id: stp
         run: pip install tox
         env:
           PTESTVERSION: '6.2.5'
 
       - run: echo "$MYVAR - MYVAR tuts "
       - run: echo "$PTESTVERSION_GA - PTESTVERSION_GA tuts "
-      - run: echo "$PTESTVERSION - PTESTVERSION tuts "
+      - run: echo "${{ env.PTESTVERSION }} - PTESTVERSION tuts "
+      - run: echo "${{ steps.stp.env.PTESTVERSION }} - PTESTVERSION tuts "
+      - run: echo "${{ steps.stp.outputs.PTESTVERSION }} - PTESTVERSION tuts "
 
       - name: Ruun py38 tets
         run: tox -e py38
