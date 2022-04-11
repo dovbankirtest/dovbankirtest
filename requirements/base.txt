@@ -1,4 +1,4 @@
-sasl==0.3.1
+
 wtforms==2.3.3
 apache-airflow[celery, apache.hive, password, google_auth, google, slack, snowflake, mysql, amazon]==2.2.4
 Authlib==0.15.5
