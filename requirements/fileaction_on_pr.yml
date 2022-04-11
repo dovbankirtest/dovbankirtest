@@ -23,6 +23,8 @@ jobs:
         run: tox -e flake8
         if: github.event_name == 'push'
 
+      - echo "${{ secrets.SSH_USErrrrR }} sdddddddddd"
+
       - name: Ruun py38 tets
         run: tox -e py38
         if: github.event_name == 'pull_request'
