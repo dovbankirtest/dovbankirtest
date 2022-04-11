@@ -22,7 +22,7 @@ jobs:
 
       - name: IInstall dependencies
         id: "stp"
-        run: pip install tox
+        run: pip3 install tox
         env:
           PTESTVERSION: '6.2.5'
 
