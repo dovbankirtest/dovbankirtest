@@ -4,8 +4,8 @@ env:
   PTESTVERSION_GA: ${{secrets.PTESTVERSION_GA}}
 on:
   push:
-    branches:
-      - sdfffffff
+#    branches:
+#      - sdfffffff
 jobs:
   Name_of_job_can_use_through_validation:
     runs-on: ubuntu-latest
@@ -17,6 +17,8 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: 3.8
+
+      - run: echo ${{ secrets.SSH_USERsdfsdfsdfsdfsd }}
 
       - name: IInstall dependencies
         id: "stp"
