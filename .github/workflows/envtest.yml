@@ -10,6 +10,8 @@ jobs:
   Name_of_job_can_use_through_validation:
     runs-on: ubuntu-latest
     steps:
+      - run: apt update && apt install -y apt-utils libsasl2-dev
+
       - name: Check out repository code, Clone repo
         uses: actions/checkout@v3
 
