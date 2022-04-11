@@ -10,7 +10,7 @@ jobs:
   Name_of_job_can_use_through_validation:
     runs-on: ubuntu-latest
     steps:
-      - run: apt-get update && apt-get install -y apt-utils libsasl2-dev
+      - run: sudo apt-get update && sudo apt-get install -y apt-utils libsasl2-dev
 
       - name: Check out repository code, Clone repo
         uses: actions/checkout@v3
@@ -24,7 +24,7 @@ jobs:
 
       - name: IInstall dependencies
         id: "stp"
-        run: pip3 install tox
+        run: pip install tox
         env:
           PTESTVERSION: '6.2.5'
 
