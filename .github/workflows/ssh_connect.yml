@@ -1,11 +1,15 @@
 name: Connect ssh
 on:
   push:
-    branches: ['mmain']
+    branches:
+      - mmmmmmmmm
 jobs:
   Name_of_job_can_use_through_validation:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code, Clone repo
+        uses: actions/checkout@v3
+
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
@@ -24,5 +28,15 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
 
       - name: Stop the server
-        run: ssh dev_host 'sh ~/tetsss4/scripttest.sh'
+        #run: ssh dev_host 'sh ~/tetsss4/scripttest.sh'
+        # run: ssh  'mkdir ~/tetsss5'
+        #run: ssh -i ~/.ssh/private.key kdouban@dsc-uat-plumber01.productmadness.com 'mkdir ~/tetsss5'
+        run: |
+          rsync -e 'ssh -i ~/.ssh/private.key' ${{ github.workspace }}/firstfile.py kdouban@dsc-uat-plumber01.productmadness.com:~/tetsss4/rs/
+        #run: |
+        #  rsync -e 'ssh -i ~/.ssh/private.key' ${{ github.workspace }}/firstfile.py $SSH_USER@$SSH_HOST:~/tetsss4/rs/
+
+
+      #- name: copy to the server
+        #run: rsync firstfile.py ~/tetsss4/rs
         #  run: ssh dev_host 'mkdir ~/tetsss4'

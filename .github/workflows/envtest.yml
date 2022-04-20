@@ -1,0 +1,73 @@
+name: Testsss
+env:
+  MYVAR: "THis is value of my var"
+  PTESTVERSION_GA: ${{secrets.PTESTVERSION_GA}}
+on:
+  push:
+    branches:
+      - feat/new4444444
+jobs:
+  Name_of_job_can_use_through_validation:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt-get update && sudo apt-get install -y apt-utils libsasl2-dev
+
+      - name: Check out repository code, Clone repo
+        uses: actions/checkout@v3
+
+      - name: Setu p Python3.8 name
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+
+      - run: echo "${{ secrets.SSH_USER }}"
+
+      - name: IInstall dependencies
+        id: "stp"
+        run: pip install tox
+        env:
+          PTESTVERSION: '6.2.5'
+
+      - run: echo "$MYVAR - MYVAR tuts "
+      - run: echo "${{ env.MYVAR }} - MYVAR tuts "
+      - run: echo "$PTESTVERSION_GA - PTESTVERSION_GA tuts "
+      - run: echo "${{ env.PTESTVERSION_GA }} - PTESTVERSION_GA tuts "
+      - run: echo "${{ env.PTESTVERSION }} - PTESTVERSION tuts "
+      - run: echo "${{ steps.stp.env.PTESTVERSION }} - PTESTVERSION tuts "
+      - run: echo "${{ steps.stp.outputs.PTESTVERSION }} - PTESTVERSION tuts "
+
+      - uses: kanga333/variable-mapper@master
+        id: export
+        with:
+          key: "${{github.base_ref}}"
+          map: |
+            {
+              "master": {
+                "PTESTVERSION": "production22"
+              },
+              ".*": {
+                "PTESTVERSION": "production33",
+                "PTESTVERSION11": "production3333",
+                "PTESTVERSION22": "productionooooo"
+              }
+            }
+          export_to: env,log,output
+
+      - name: Ruun py38 tets
+        run: tox -e py38
+        env:
+          PTESTVERSION33: ${{ steps.export.outputs.PTESTVERSION }}
+          PTESTVERSION: ${{ env.PTESTVERSION }}
+          PTESTV: ${{ env.MYVAR }}
+          PTESTV2: $MYVAR
+
+
+
+
+
+#      - name: Run from workflow_dispatch
+#        if: github.event_name == 'workflow_dispatch'
+#        run: |
+ #         echo "ered by a ${{ github.event.inputs.rebuild_branch }} erebuild_brancht."
+
+
