@@ -4,7 +4,8 @@ env:
   PTESTVERSION_GA: ${{secrets.PTESTVERSION_GA}}
 on:
   push:
-
+    branches:
+      - feat/new4444444
 jobs:
   Name_of_job_can_use_through_validation:
     runs-on: ubuntu-latest

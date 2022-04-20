@@ -32,7 +32,7 @@ jobs:
         # run: ssh  'mkdir ~/tetsss5'
         #run: ssh -i ~/.ssh/private.key kdouban@dsc-uat-plumber01.productmadness.com 'mkdir ~/tetsss5'
         run: |
-          rsync -e 'ssh -i ~/.ssh/private.key' ${{ github.workspace }}/requirements kdouban@dsc-uat-plumber01.productmadness.com:~/tetsss4/rs/
+          rsync -r -e 'ssh -i ~/.ssh/private.key' ${{ github.workspace }}/requirements kdouban@dsc-uat-plumber01.productmadness.com:~/tetsss4/rs/
         #run: |
         #  rsync -e 'ssh -i ~/.ssh/private.key' ${{ github.workspace }}/firstfile.py $SSH_USER@$SSH_HOST:~/tetsss4/rs/
 
