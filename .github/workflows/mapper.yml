@@ -21,7 +21,7 @@ jobs:
           key: "${{github.base_ref}}"
           map: |
             {
-              "master": {
+              "main": {
                 "PTESTVERSION": "1",
                 "PTESTVERSION11": "11",
                 "PTESTVERSION22": "111"
@@ -34,3 +34,6 @@ jobs:
             }
           export_to: env,log,output
 
+      - run: echo "${{ env.PTESTVERSION }} - $GITHUB_REF tuts "
+      - run: echo "${{ env.PTESTVERSION11 }} - base_ref tuts "
+      - run: echo "${{ steps.export.outputs.PTESTVERSION22 }} - base_ref tuts "
