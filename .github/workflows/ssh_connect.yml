@@ -34,7 +34,7 @@ jobs:
         #run: |
         #  rsync -r -e 'ssh -i ~/.ssh/private.key' ${{ github.workspace }}/requirements kdouban@dsc-uat-plumber01.productmadness.com:~/tetsss4/rs/
         run: |
-          rsync -r -e 'ssh -i ~/.ssh/private.key' . dev_host:~/tetsss4/rs/
+          rsync -r . dev_host:~/tetsss4/rs/
         #run: |
         #  rsync -e 'ssh -i ~/.ssh/private.key' ${{ github.workspace }}/firstfile.py $SSH_USER@$SSH_HOST:~/tetsss4/rs/
 
