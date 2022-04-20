@@ -1,0 +1,36 @@
+name: Testsss
+env:
+  MYVAR: "THis is value of my var"
+  PTESTVERSION_GA: ${{secrets.PTESTVERSION_GA}}
+on:
+  push:
+
+jobs:
+  Name_of_job_can_use_through_validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code, Clone repo
+        uses: actions/checkout@v3
+
+      - run: echo "${{ github.ref}} - $GITHUB_REF tuts "
+      - run: echo "${{ github.base_ref}} - base_ref tuts "
+
+      - uses: kanga333/variable-mapper@master
+        id: export
+        with:
+          key: "${{github.base_ref}}"
+          map: |
+            {
+              "master": {
+                "PTESTVERSION": "1",
+                "PTESTVERSION11": "11",
+                "PTESTVERSION22": "111"
+              },
+              ".*": {
+                "PTESTVERSION": "2",
+                "PTESTVERSION11": "22",
+                "PTESTVERSION22": "222"
+              }
+            }
+          export_to: env,log,output
+
