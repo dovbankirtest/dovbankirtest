@@ -11,9 +11,19 @@ on:
     types:
       - completed
 jobs:
- deploy_job:
-   runs-on: ubuntu-latest
-   steps:
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo 'The triggering workflow passed'
+  on-failure:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'The triggering workflow failed'
+  deploy_job:
+    runs-on: ubuntu-latest
+    steps:
      - name: Check out repository code, Clone repo
        uses: actions/checkout@v3
 
@@ -27,10 +37,10 @@ jobs:
      - run: echo "222 ifffffffff "
        if: github.event_name == 'workflow_dispatch' && github.event.inputs.rebuild_branch2 == 'true'
 
-#     - name: Run script
-#       env:
-#         BRANCH: ${{ github.ref}}
-#         REBUILD_BRANCH: ${{ github.event.inputs.rebuild_branch2 }}
-#       run: |
-#         sh scripts/print_something.sh
+    #     - name: Run script
+    #       env:
+    #         BRANCH: ${{ github.ref}}
+    #         REBUILD_BRANCH: ${{ github.event.inputs.rebuild_branch2 }}
+    #       run: |
+    #         sh scripts/print_something.sh
 
