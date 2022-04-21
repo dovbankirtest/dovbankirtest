@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - dev
+      - feat/new66
 jobs:
   test_job:
     runs-on: ubuntu-latest
@@ -27,7 +28,10 @@ jobs:
       - name: Check out repository code, Clone repo
         uses: actions/checkout@v3
 
-      - run: echo needs.test_job.result
+      - run: echo "${{ needs.test_job.result }}"
+      - run: echo ${{ needs.test_job.result }}
+      - run: echo "$needs.test_job.result"
+      - run: echo $needs.test_job.result
 
       - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
       - run: echo "${{ github.base_ref}} tuts base ref tuts "
