@@ -20,18 +20,21 @@ jobs:
         if: github.event_name == 'push'
   deploy_job:
     needs: test_job
-    if: github.event_name == 'push'
+    if: |
+      always() && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-     - name: Check out repository code, Clone repo
-       uses: actions/checkout@v3
+      - name: Check out repository code, Clone repo
+        uses: actions/checkout@v3
 
-     - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
-     - run: echo "${{ github.base_ref}} tuts base ref tuts "
-     - run: echo "${{ github.event_name}} event_nsmae ref tuts "
+      - run: echo needs.test_job.result
 
-     - run: echo "111 ifffffffff "
-       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
+      - run: echo "${{ github.base_ref}} tuts base ref tuts "
+      - run: echo "${{ github.event_name}} event_nsmae ref tuts "
 
-     - run: echo "222 ifffffffff "
-       if: github.event_name == 'workflow_dispatch' && github.event.inputs.rebuild_branch2 == 'true'
+      - run: echo "111 ifffffffff "
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+      - run: echo "222 ifffffffff "
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.rebuild_branch2 == 'true'
