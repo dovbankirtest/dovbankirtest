@@ -1,5 +1,11 @@
 name: CI
 on:
+  workflow_dispatch:
+    inputs:
+      rebuild_image:
+        description: 'print true if need to rebuidl docker image.'
+        required: False
+        default: 'no_rebuild'
   pull_request:
   push:
     branches:
@@ -8,6 +14,7 @@ on:
       - feat/new66
 jobs:
   test_job:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code, Clone repo
@@ -22,7 +29,9 @@ jobs:
   deploy_job:
     needs: test_job
     if: |
-      always() && github.event_name == 'push'
+      always() &&
+      ((needs.test_job.result == 'success' && github.event_name == 'push')  ||
+      (needs.test_job.result == 'skipped' && github.event_name == 'workflow_dispatch'))
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code, Clone repo
