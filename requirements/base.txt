@@ -17,5 +17,5 @@ pandas==1.2.0
 boto3==1.16.56
 numpy==1.19.5
 selenium==3.141.0
-# Jinja 2.1.13 issue
+# Jinja 2.2.13 issue
 Markupsafe==2.0.1

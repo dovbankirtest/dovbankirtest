@@ -1,4 +1,4 @@
-name: Test event
+name: deploy event
 on:
   workflow_dispatch:
     inputs:
@@ -6,9 +6,10 @@ on:
         description: 'print true if need to rebuidl docker image.'
         required: False
         default: 'no_rebuild'
-  push:
-    branches:
-      - mmaster
+  workflow_run:
+    workflows: ["Test event"]
+    types:
+      - completed
 jobs:
  test_job:
    runs-on: ubuntu-latest
@@ -16,10 +17,20 @@ jobs:
      - name: Check out repository code, Clone repo
        uses: actions/checkout@v3
 
-     - name: Run script
-       env:
-         BRANCH: ${{ github.ref}}
-         REBUILD_BRANCH: ${{ github.event.inputs.rebuild_branch2 }}
-       run: |
-         sh scripts/print_something.sh
+     - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
+     - run: echo "${{ github.base_ref}} tuts base ref tuts "
+     - run: echo "${{ github.event_name}} event_nsmae ref tuts "
+
+     - run: echo "111 ifffffffff "
+       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+     - run: echo "222 ifffffffff "
+       if: github.event_name == 'workflow_dispatch' && github.event.inputs.rebuild_branch2 == 'true'
+
+#     - name: Run script
+#       env:
+#         BRANCH: ${{ github.ref}}
+#         REBUILD_BRANCH: ${{ github.event.inputs.rebuild_branch2 }}
+#       run: |
+#         sh scripts/print_something.sh
 

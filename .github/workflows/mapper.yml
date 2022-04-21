@@ -4,7 +4,8 @@ env:
   PTESTVERSION_GA: ${{secrets.PTESTVERSION_GA}}
 on:
   push:
-
+    branches:
+      - feat/new4444444
 jobs:
   Name_of_job_can_use_through_validation:
     runs-on: ubuntu-latest
@@ -18,10 +19,10 @@ jobs:
       - uses: kanga333/variable-mapper@master
         id: export
         with:
-          key: "${{github.base_ref}}"
+          key: "${{github.ref}}"
           map: |
             {
-              "main": {
+              "refs/heads/feat/new5": {
                 "PTESTVERSION": "1",
                 "PTESTVERSION11": "11",
                 "PTESTVERSION22": "111"
