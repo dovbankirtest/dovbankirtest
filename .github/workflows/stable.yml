@@ -6,10 +6,10 @@ on:
         description: 'print true if need to rebuidl docker image.'
         required: False
         default: 'no_rebuild'
-  workflow_run:
-    workflows: ["Test event"]
-    types:
-      - completed
+#  workflow_run:
+#    workflows: ["Test event"]
+#    types:
+#      - completed
 jobs:
   on-success:
     runs-on: ubuntu-latest

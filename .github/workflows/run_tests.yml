@@ -5,9 +5,22 @@ on:
 #    branches:
 #      - main
 jobs:
- test_job:
-   runs-on: ubuntu-latest
-   steps:
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code, Clone repo
+        uses: actions/checkout@v3
+
+      - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
+      - run: echo "${{ github.base_ref}} tuts base ref tuts "
+      - run: echo "${{ github.event_name}} event_nsmae ref tuts "
+
+      - run: echo "111 iffff works "
+        if: github.event_name == 'push'
+  deploy_job:
+    needs: test_job
+    runs-on: ubuntu-latest
+    steps:
      - name: Check out repository code, Clone repo
        uses: actions/checkout@v3
 
@@ -15,5 +28,8 @@ jobs:
      - run: echo "${{ github.base_ref}} tuts base ref tuts "
      - run: echo "${{ github.event_name}} event_nsmae ref tuts "
 
-     - run: echo "111 iffff works "
-       if: github.event_name == 'push'
+     - run: echo "111 ifffffffff "
+       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+     - run: echo "222 ifffffffff "
+       if: github.event_name == 'workflow_dispatch' && github.event.inputs.rebuild_branch2 == 'true'
