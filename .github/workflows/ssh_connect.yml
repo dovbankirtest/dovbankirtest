@@ -1,8 +1,8 @@
 name: Connect ssh
 on:
   push:
-#    branches:
-#      - mmmmmmmmm
+    branches:
+      - mmmmmmmmm
 jobs:
   Name_of_job_can_use_through_validation:
     runs-on: ubuntu-latest
