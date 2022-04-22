@@ -6,7 +6,7 @@ on:
         description: 'Select the master or dev branch,
                       and check the box if you need to rebuild the docker image'
         required: false
-        default: true
+        default: false
         type: boolean
 
   pull_request:
@@ -47,6 +47,12 @@ jobs:
     steps:
       - name: Check out repository code, Clone repo
         uses: actions/checkout@v3
+
+      - run: echo "11 stri trye "
+        if: github.event.inputs.rebuild_image == 'true'
+
+      - run: echo "33 bool falsee "
+        if: github.event.inputs.rebuild_image == 'false'
 
       - run: echo "${{ github.event.inputs.rebuild_image }} "
 
