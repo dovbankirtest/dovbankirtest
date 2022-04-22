@@ -3,7 +3,8 @@ on:
   workflow_dispatch:
     inputs:
       rebuild_image:
-        description: 'print true if need to rebuidl docker image.'
+        description: 'choose branch master or dev,
+                      and print true if need to rebuidl docker image.'
         required: False
         default: 'no_rebuild'
   pull_request:
@@ -11,7 +12,7 @@ on:
     branches:
       - main
       - dev
-#      - feat/new66
+#      - feat/new7
 jobs:
   test_job:
     if: github.event_name != 'workflow_dispatch'
