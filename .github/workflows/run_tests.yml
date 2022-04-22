@@ -3,10 +3,12 @@ on:
   workflow_dispatch:
     inputs:
       rebuild_image:
+
         description: 'Select the master or dev branch,
                       and check the box if you need to rebuild the docker image'
         required: false
         default: false
+
         type: boolean
 
   pull_request:
@@ -29,7 +31,6 @@ jobs:
 
       - run: echo "3 bool falsee "
         if: ${{ github.event.inputs.rebuild_image == 'false' }}
-
 
       - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
 
