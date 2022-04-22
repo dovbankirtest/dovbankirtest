@@ -38,6 +38,7 @@ jobs:
         uses: actions/checkout@v3
 
       - run: echo "${{ needs.test_job.result }}"
+
       - run: echo ${{ needs.test_job.result }}
       - run: echo "$needs.test_job.result"
       - run: echo $needs.test_job.result
