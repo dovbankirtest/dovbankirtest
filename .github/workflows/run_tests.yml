@@ -21,6 +21,7 @@ jobs:
         uses: actions/checkout@v3
 
       - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
+
       - run: echo "${{ github.base_ref}} tuts base ref tuts "
       - run: echo "${{ github.event_name}} event_nsmae ref tuts "
 
@@ -50,3 +51,4 @@ jobs:
 
       - run: echo "222 ifffffffff "
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.rebuild_branch2 == 'true'
+
