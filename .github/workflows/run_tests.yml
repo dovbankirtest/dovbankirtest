@@ -48,6 +48,12 @@ jobs:
       - name: Check out repository code, Clone repo
         uses: actions/checkout@v3
 
+      - run: echo "11 stri trye "
+        if: github.event.inputs.rebuild_image == 'true'
+
+      - run: echo "33 bool falsee "
+        if: github.event.inputs.rebuild_image == 'false'
+
       - run: echo "${{ github.event.inputs.rebuild_image }} "
 
       - run: echo "1 bool trye "
