@@ -3,10 +3,10 @@ on:
   workflow_dispatch:
     inputs:
       rebuild_image:
-        description: 'choose branch master or dev,
-                      and print true if need to rebuidl docker image.'
-        required: False
-        default: False
+        description: 'Select the master or dev branch,
+                      and check the box if you need to rebuild the docker image'
+        required: false
+        default: false
         type: boolean
 
   pull_request:
@@ -27,11 +27,9 @@ jobs:
       - run: echo "1 stri trye "
         if:  ${{ github.event.inputs.rebuild_image == 'true' }}
 
-      - run: echo "3 bool trye "
-        if: ${{ github.event.inputs.rebuild_image == true }}
+      - run: echo "3 bool falsee "
+        if: ${{ github.event.inputs.rebuild_image == 'false' }}
 
-      - run: echo "4 stri Trye "
-        if: ${{ github.event.inputs.rebuild_image == 'True' }}
 
       - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
 
@@ -50,6 +48,14 @@ jobs:
     steps:
       - name: Check out repository code, Clone repo
         uses: actions/checkout@v3
+
+      - run: echo "${{ github.event.inputs.rebuild_image }} "
+
+      - run: echo "1 bool trye "
+        if: ${{ github.event.inputs.rebuild_image == 'true' }}
+
+      - run: echo "3 bool falsee "
+        if: ${{ github.event.inputs.rebuild_image == 'false' }}
 
       - run: echo "${{ needs.test_job.result }}"
       - run: echo "$needs.test_job.result"
