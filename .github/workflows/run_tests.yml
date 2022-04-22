@@ -6,7 +6,9 @@ on:
         description: 'choose branch master or dev,
                       and print true if need to rebuidl docker image.'
         required: False
-        default: 'no_rebuild'
+        default: False
+        type: boolean
+
   pull_request:
   push:
     branches:
