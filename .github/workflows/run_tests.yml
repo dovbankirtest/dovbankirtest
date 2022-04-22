@@ -6,7 +6,7 @@ on:
         description: 'Select the master or dev branch,
                       and check the box if you need to rebuild the docker image'
         required: false
-        default: true
+        default: false
         type: boolean
 
   pull_request:
