@@ -30,7 +30,10 @@ jobs:
       - run: echo "3 bool falsee "
         if: ${{ github.event.inputs.rebuild_image == 'false' }}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7f6ab32908325a71146178aded873b23d2489308
       - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
 
       - run: echo "${{ github.base_ref}} tuts base ref tuts "
