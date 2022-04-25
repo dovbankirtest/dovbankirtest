@@ -31,13 +31,13 @@ jobs:
         if: ${{ github.event.inputs.rebuild_image == 'false' }}
 
       - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
-      - run: echo " adfasdfasdf "
+      - run: echo  adfasdfasdf "
       - run: echo "${{ github.base_ref}} tuts base ref tuts "
       - run: echo "${{ github.event_name}} event_nsmae ref tuts "
 
       - run: echo "111 iffff works "
         if: github.event_name == 'push'
-        
+
   deploy_job:
     needs: test_job
     if: |
