@@ -31,7 +31,7 @@ jobs:
         if: ${{ github.event.inputs.rebuild_image == 'false' }}
 
       - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
-
+      - run: echo  adfasdfasdf "
       - run: echo "${{ github.base_ref}} tuts base ref tuts "
       - run: echo "${{ github.event_name}} event_nsmae ref tuts "
 
