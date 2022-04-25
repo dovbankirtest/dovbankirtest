@@ -27,7 +27,7 @@ jobs:
       - run: echo "1 stri trye "
         if:  ${{ github.event.inputs.rebuild_image == 'true' }}
 
-      - run: echo "3 bool falsee "
+      - run: echos "3 bool falsee "
         if: ${{ github.event.inputs.rebuild_image == 'false' }}
 
       - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
