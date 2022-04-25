@@ -31,12 +31,13 @@ jobs:
         if: ${{ github.event.inputs.rebuild_image == 'false' }}
 
       - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
-
+      - run: echo  adfasdfasdf "
       - run: echo "${{ github.base_ref}} tuts base ref tuts "
       - run: echo "${{ github.event_name}} event_nsmae ref tuts "
 
       - run: echo "111 iffff works "
         if: github.event_name == 'push'
+
   deploy_job:
     needs: test_job
     if: |
@@ -64,6 +65,7 @@ jobs:
 
       - run: echo "${{ needs.test_job.result }}"
       - run: echo "$needs.test_job.result"
+
       - run: echo $needs.test_job.result
       - run: echo ${{ needs.test_job.result }}
       - run: echo needs.test_job.result
@@ -77,4 +79,3 @@ jobs:
 
       - run: echo "222 ifffffffff "
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.rebuild_branch2 == 'true'
-
