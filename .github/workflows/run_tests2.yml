@@ -1,0 +1,25 @@
+name: Run tests
+on:
+  pull_request: {}
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt-get update && sudo apt-get install -y apt-utils libsasl2-dev
+
+      - name: Checkout repository code
+        uses: actions/checkout@v3
+
+      - name: Setup python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: pip install tox
+
+      - name: Run linters
+        run: tox -e flake8
+
+      - name: Run tests
+        run: tox -e py38
