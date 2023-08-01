@@ -3,7 +3,7 @@ on:
 #  pull_request:
   push:
     branches:
-      - devddddd
+      - new1
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest

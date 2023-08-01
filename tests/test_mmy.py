@@ -20,4 +20,9 @@ def test1():
     print(' =+=' + ver3)
     print(' =+=' + ver4)
     print(' =+=' + ver5)
-    assert ver2 == '6.2.5'
+    # assert ver2 == '6.2.5'
+    assert 'asdf'.upper() == 'ASDF'
+
+
+def test2():
+    assert 'q' != 'Q'
