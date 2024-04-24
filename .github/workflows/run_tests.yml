@@ -12,8 +12,8 @@ on:
   pull_request:
   push:
     branches:
-      - main
-      - dev
+      - main_r
+      - dev_r
 jobs:
   test_job:
     if: github.event_name != 'workflow_dispatch'
