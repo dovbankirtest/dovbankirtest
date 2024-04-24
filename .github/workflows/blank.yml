@@ -8,6 +8,8 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - run: sudo apt-get update && susdo apt-get install -y apt-utils libsasl2-dev
+
       - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
       - run: echo "${{ github.base_ref}} tuts base ref tuts "
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
