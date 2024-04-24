@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   Explore-GitHub-Actions:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - run: sudo apt-get update 
       - run: sudo apt-get install -y apt-utils libsasl2-dev
