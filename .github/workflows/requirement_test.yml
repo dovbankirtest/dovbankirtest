@@ -20,7 +20,7 @@ jobs:
 
      - run: pip -V
 
-     - run: pip install --upgrade pip==3.26.0
+     - run: pip install --upgrade pip==23.1.2
 
      - run: pip -V
 
