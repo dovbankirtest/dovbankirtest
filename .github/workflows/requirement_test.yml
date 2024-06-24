@@ -31,6 +31,8 @@ jobs:
      - name: tox pip v
        run: tox -e t
 
+     - run: tox -V
+
     #  - name: Run tests
     #    run: tox -e py38
 
