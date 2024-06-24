@@ -18,11 +18,12 @@ jobs:
        with:
          python-version: 3.8
 
+     - run: pip -V
+
      - name: Install dependencies
        run: pip install tox-pip-version
 
      - run: pip -V
-     - run: echo "${{ github.repository }}"
 
     #  - name: Run linters
     #    run: tox -e flake8
