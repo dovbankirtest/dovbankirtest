@@ -5,24 +5,25 @@ on:
     branches:
       - feat/req_test1
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
-    steps:
-      - run: sudo apt-get update 
-      - run: sudo apt-get install -y apt-utils libsasl2-dev
+ run_tests:
+   runs-on: ubuntu-latest
+   steps:
+     - run: sudo apt-get update && sudo apt-get install -y apt-utils libsasl2-dev
 
-      - run: echo "${{ github.ref}} tuts $GITHUB_REF tuts "
-      - run: echo "${{ github.base_ref}} tuts base ref tuts "
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: echo "🍏222 This job's status- ${{ github.workspace }}."
-      - run: echo "333 This job's status- ${{ github.workspace }}."
+     - name: Checkout repository code
+       uses: actions/checkout@v3
+
+     - name: Setup python
+       uses: actions/setup-python@v3
+       with:
+         python-version: 3.8
+
+     - name: Install dependencies
+       run: pip install tox
+
+     - name: Run linters
+       run: tox -e flake8
+
+     - name: Run tests
+       run: tox -e py38
+
