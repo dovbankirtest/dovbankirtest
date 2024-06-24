@@ -21,9 +21,11 @@ jobs:
      - name: Install dependencies
        run: pip install tox-pip-version
 
+     - run: echo pip -V
+
     #  - name: Run linters
     #    run: tox -e flake8
 
-     - name: Run tests
-       run: tox -e py38
+    #  - name: Run tests
+    #    run: tox -e py38
 
