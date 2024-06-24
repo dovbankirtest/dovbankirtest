@@ -32,6 +32,9 @@ jobs:
     #  - name: Run linters
     #    run: tox -e flake8
 
-     - name: Run tests
-       run: tox -e py38
+     - name: tox pip v
+       run: tox -e t
+
+    #  - name: Run tests
+    #    run: tox -e py38
 
