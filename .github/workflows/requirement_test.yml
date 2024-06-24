@@ -18,16 +18,12 @@ jobs:
        with:
          python-version: 3.8
 
-     - run: pip -V
+    #  - run: pip -V
 
-     - run: pip install --upgrade pip==23.1.2
-
-     - run: pip -V
+    #  - run: pip install --upgrade pip==23.1.2
 
      - name: Install dependencies
        run: pip install tox
-
-     - run: pip -V
 
     #  - name: Run linters
     #    run: tox -e flake8
