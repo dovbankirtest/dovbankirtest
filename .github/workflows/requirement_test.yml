@@ -25,7 +25,7 @@ jobs:
      - run: pip -V
 
      - name: Install dependencies
-       run: pip install tox-pip-version
+       run: pip install tox
 
      - run: pip -V
 
