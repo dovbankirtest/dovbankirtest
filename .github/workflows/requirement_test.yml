@@ -19,7 +19,7 @@ jobs:
          python-version: 3.8
 
      - name: Install dependencies
-       run: pip install tox
+       run: pip install tox==3.26.0
 
     #  - name: Run linters
     #    run: tox -e flake8
